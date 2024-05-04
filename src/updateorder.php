@@ -1,10 +1,7 @@
 <?php
-session_start();
+	session_start();
 
 include("./config/database.php");
-
-// Initialize variables
-$iname = $quantity = $uprice = $tprice = $email = $mobile = '';
 
 if (isset($_POST['update'])) {
     $iname = $_POST['iname'];
@@ -15,15 +12,17 @@ if (isset($_POST['update'])) {
     $mobile = $_POST['mobile'];
     $ID = $_POST['ID'];
 
+
     $sql = "UPDATE `order` SET iname ='$iname', quantity = '$quantity', uprice = '$uprice',
         tprice = '$tprice', email = '$email', mobile = '$mobile' WHERE ID = '$ID'";
+
 
     $result = $conn->query($sql);
 
     if ($result == TRUE) {
-        echo "Record updated successfully!";
+        echo "Record update suceesfully!";
         header('Location: orderdashboard.php');
-        exit;
+
     } else {
         echo "Error:" . $sql . "<br>" . $conn->error;
     }
@@ -32,34 +31,36 @@ if (isset($_POST['update'])) {
 if (isset($_GET['ID'])) {
     $id = $_GET['ID'];
     $sql = "SELECT * FROM `order` WHERE ID = '$id'";
+
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+
             $iname = $row['iname'];
             $quantity = $row['quantity'];
             $uprice = $row['uprice'];
             $tprice = $row['tprice'];
             $email = $row['email'];
             $mobile = $row['mobile'];
+
+
             $ID = $row['ID'];
         }
-    } else {
-        header('Location: orderdashboard.php');
-        exit;
-    }
-}
-?>
+    
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Order</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="./style/updateorder.css">
 </head>
 <body>
+
    <!--header-->
    <section class="menu">
     <div class="nav">
@@ -74,43 +75,74 @@ if (isset($_GET['ID'])) {
             <li><a href="SignUp.php">SignUp</a></li>
             <li><a href="payment2.html">Add to Cart</a></li>
         </ul>
+
     </div>
 </section>
 
-<div class="container">
-    <h2>Edit Order</h2>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <div class="form-group">
-            <label for="iname">Item Name:</label>
-            <input type="text" id="iname" name="iname" value="<?php echo $iname; ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="quantity">Quantity:</label>
-            <input type="text" id="quantity" name="quantity" value="<?php echo $quantity; ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="uprice">Unit Price:</label>
-            <input type="text" id="uprice" name="uprice" value="<?php echo $uprice; ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="tprice">Total Price:</label>
-            <input type="text" id="tprice" name="tprice" value="<?php echo $tprice; ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
-        </div>
-        <div class="form-group">
-            <label for="mobile">Mobile Number:</label>
-            <input type="tel" id="mobile" name="mobile" value="<?php echo $mobile; ?>" required>
-        </div>
-        <div class="button-group">
+    <div class="container">
+        <h2>Edit Order</h2>
+        
+     
+        <form action="updateorder.php" method="post">
+            <div class="form-group">
             <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-            <button class="edit-button" type="submit" value="update" name="update"> Save Changes</button>
-            <br/>
-        </div>
-    </form>
-</div>
 
+                <label for="iname">Item Name:</label>
+                <input type="text" id="iname" name="iname" value="<?php echo $iname; ?>">
+            </div>
+            
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="text" id="quantity" name="quantity" value="<?php echo $quantity; ?>">
+            </div>
+            <div class="form-group">
+                <label for="uprice">Unit Price:</label>
+                <input type="text" id="uprice" name="uprice" value="<?php echo $uprice; ?>">
+            </div>
+            <div class="form-group">
+                <label for="tprice">Total Price:</label>
+                <input type="text" id="tprice" name="tprice" value="<?php echo $tprice; ?>">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<?php echo $email; ?>">
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" value="<?php echo $mobile; ?>">
+            </div>
+            <div class="button-group">
+                <button class="edit-button"  type="submit" value="update" name="update"> Save Changes</button>
+                <br/>
+                
+            </div>
+        </form>
+        
+    </div>
 </body>
+<script>
+    function confirmDelete() {
+        if (confirm('Are you sure you want to delete the user profile?')) {
+            // Code to delete the user profile
+            showNotification('User profile deleted successfully!', 'success');
+        }
+    }
+
+    function showNotification(message, type) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.classList.add(type);
+        setTimeout(() => {
+            notification.textContent = '';
+            notification.classList.remove(type);
+        }, 3000); // Remove notification after 3 seconds
+    }
+</script>
 </html>
+<?php
+    } else {
+        header('Location: orderdashboard.php');
+    }
+}
+?>

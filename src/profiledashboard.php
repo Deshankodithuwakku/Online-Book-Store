@@ -60,7 +60,7 @@
           <div>
             <h1 class="text-5xl font-bold">profile manage  Dashboard</h1>
             <br/>
-            <button class="btn btn-primary"> Edit Profile</button>      
+            <button class="btn btn-primary" onclick="goToProfile()"> Create Profile</button>      
             <br/>
                   
           </div>
@@ -188,7 +188,14 @@ Profile Details        </div></center>
 </center>
 
 
+<script>
+    function goToProfile() {
+        window.location.href = 'register.php'; // Corrected 'login.php' to 'login.php'
+    }
+</script>
 
+
+  
   
 
     
