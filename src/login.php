@@ -32,6 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       header("location:inventrydashboard.php");
       die;
     }
+    else if ($user_data['user_type'] == 'cmanager') {
+      header("location:viewcontactdata.php");
+      die;
+    }
+    else if ($user_data['user_type'] == 'pamanager') {
+      header("location:readpayments.php");
+      die;
+    }
   } else {
     $error = "Incorrect email or password"; // Set error message
   }

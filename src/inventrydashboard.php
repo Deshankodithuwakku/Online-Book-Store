@@ -31,10 +31,9 @@
             <li><a href="category.html">Category</a></li>
             <li><a href="OFFER.HTML">Offers</a></li>
             <li><a href="aboutusnew.html">About Us</a></li>
-            <li><a href="Create.php">Feedback</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="SignUp.php">SignUp</a></li>
+            <li><a href="Create.php">Feedback</a></li> 
             <li><a href="payment2.html">Add to Cart</a></li>
+            <li><a href="logout.php">LogOut</a></li>
         </ul>
 
     </div>

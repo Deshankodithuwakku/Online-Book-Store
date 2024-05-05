@@ -79,6 +79,12 @@
               <option value="omanager">Order manager</option>
               <option value="pmanager">Profile manager</option>
               <option value="imanager">Inverntory manager</option>
+              <option value="cmanager">Conatct manager</option>
+              <option value="pamanager">Payment manager</option>
+
+
+
+              
               </select> <br>
             <button type="submit" class=" SignUp-btn">Sign Up</button>
             <p>Already have an account ? <a href="login.php"> Login </a></p>
