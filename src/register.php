@@ -8,7 +8,7 @@
         $Email=$_POST['email'];
         $Password=$_POST['password'];
         $NIC=$_POST['nic'];
-        $Type="user";
+        $Type=$_POST['user_type'];
        
       
         
@@ -73,6 +73,13 @@
         
             <input type="text" name="nic" class="input-box" placeholder="NIC ">
             <input type="Password" name="password" class="input-box" placeholder="Password"> <br>
+            <select name="user_type">
+              <option value="">-Select-</option>
+              <option value="User" >User</option>
+              <option value="omanager">Order manager</option>
+              <option value="pmanager">Profile manager</option>
+              <option value="imanager">Inverntory manager</option>
+              </select> <br>
             <button type="submit" class=" SignUp-btn">Sign Up</button>
             <p>Already have an account ? <a href="login.php"> Login </a></p>
 

@@ -17,11 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $user_data = mysqli_fetch_array($result);
     $_SESSION['user_id'] = $user_data['ID'];
 
-    if ($user_data['user_type'] == 'admin') {
-      header("location:adminPage.php");
+    if ($user_data['user_type'] == 'user') {
+      header("location:homebook.html");
       die;
-    } else if ($user_data['user_type'] == 'user') {
-      header("location:userprofile.php");
+    } else if ($user_data['user_type'] == 'omanager') {
+      header("location:orderdashboard.php");
+      die;
+    }
+    else if ($user_data['user_type'] == 'pmanager') {
+      header("location:profiledashboard.php");
+      die;
+    }
+    else if ($user_data['user_type'] == 'imanager') {
+      header("location:inventrydashboard.php");
       die;
     }
   } else {
