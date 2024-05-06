@@ -3,7 +3,7 @@
 $serverName="localhost";
 $username="root";
 $password="";
-$databaseName="book";
+$databaseName="onlinebookdb";
 
 $con =mysqli_connect($serverName,$username,$password,$databaseName);
 

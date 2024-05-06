@@ -23,8 +23,8 @@ $result = $con->query($select_sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="../styles/header-footer.css">
-    <link rel="stylesheet" type="text/css" href="../styles/viewcontact.css">
+    <link rel="stylesheet" type="text/css" href="./style/header-footer.css">
+    <link rel="stylesheet" type="text/css" href="./style/viewcontact.css">
 </head>
 <body>
 	
